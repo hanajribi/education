@@ -29,13 +29,17 @@ const Login = () => {
             pwd: enterPwd
         }
 
-        console.log('here user to send to BE', user)
+        console.log('here user login to send to BE', user)
         axios.post('http://localhost:3001/api/users/login', user).then((result) => {
-            console.log('response', result);
+            console.log('response login', result);
+            console.log('done with succes');
             localStorage.setItem("userConnected", result.data.user.id)
+            console.log('user Connected', result.data.user.id);
 
         })
-        history.push('/courses')
+        //  history.push('/profile/:id');
+       history.push('/home');
+
 
     }
     return (

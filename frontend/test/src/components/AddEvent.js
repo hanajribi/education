@@ -58,85 +58,25 @@ const AddEvent = () => {
   //Function to send content of Form when click in the button
   const submitAddEventsFormHandler = (event) => {
     event.preventDefault();
-    // let eventAdded = {
-    //   name: enteredName,
-    //   description: enteredDescription,
-    //   price: enteredPrice,
-    //   date: enteredDate,
-    // };
+ 
     let eventAdded = new FormData();
     eventAdded.append("name", enteredName);
     eventAdded.append("description", enteredDescription);
     eventAdded.append("price", enteredPrice);
     eventAdded.append("date", enteredDate);
     eventAdded.append("img", file);
+    eventAdded.append('userId',localStorage.getItem('userConnected'));
 
     console.log("Here Into Add Event", eventAdded);
     axios
       .post("http://localhost:3001/api/events", eventAdded)
       .then((result) => {
         console.log("Response after adding event", result);
-        history.push("/events");
+        history.push("/myEvents/:userId");
       });
   };
   return (
-    // <div className="container">
-    //   <Title titre="Add event" />
-    //   <form onSubmit={submitFormHandler}>
-    //     <label className="form-label">Event Name:</label>
-    //     <input
-    //       className="form-control"
-    //       value={enteredName}
-    //       onChange={nameHandler}
-    //       type="text"
-    //     />
-    //     <label className="form-label">Description:</label>
-    //     <input
-    //       className="form-control"
-    //       value={enteredDescription}
-    //       onChange={descriptionHandler}
-    //       type="text"
-    //     />
-    //     <label className="form-label">Date:</label>
-    //     <input
-    //       className="form-control"
-    //       value={enteredDate}
-    //       onChange={dateHandler}
-    //       type="text"
-    //     />
-    //     <label className="form-label">Price: </label>
-    //     <input
-    //       className="form-control"
-    //       value={enteredPrice}
-    //       onChange={priceHandler}
-    //       type="text"
-    //     />
-    //     <label className="form-label">Image: </label>
-    //     <input
-    //       ref={filePickerRef}
-    //       className="form-control"
-    //       accept=".jpg, .png, .jpeg"
-    //       type="file"
-    //       style={{ display: "none" }}
-    //       onChange={pickedHandler}
-    //     />
-    //     <div className="text-center">
-    //       <button
-    //         className="btn btn-success"
-    //         onClick={pickedImageHandler}
-    //         type="button"
-    //       >
-    //         Pick Image
-    //       </button>
-    //     </div>
-    //     <div className="text-center">
-    //       {previewUrl && <img src={previewUrl} style={{ width: "100px" }} />}
-    //     </div>
-    //     <button className="btn btn-success" type="submit">
-    //       Add Event
-    //     </button>
-    //   </form>
-    // </div>
+    
     <div>
             <Title titre="Events" />
             <div className="row mt-5">

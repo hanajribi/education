@@ -5,7 +5,6 @@ import { useHistory} from "react-router-dom";
 import Title from "./Title";
 const AddCourse = () => {
   let history = useHistory();
-  let [enteredTeacherName, setEnteredTeacherName] = useState("");
   let [enteredCourseName, setEnteredCourseName] = useState("");
   let [enteredPrice, setEnteredPrice] = useState("");
   let [enteredDescription, setEnteredDescription] = useState("");
@@ -24,9 +23,7 @@ const AddCourse = () => {
       }
       fileReader.readAsDataURL(file);
   }, [file])
-  const getTeacherName = (event) => {
-    setEnteredTeacherName(event.target.value);
-  };
+ 
   const getCourseName = (event) => {
     setEnteredCourseName(event.target.value);
   };
@@ -54,15 +51,8 @@ const AddCourse = () => {
     event.preventDefault();
     console.log("here into add courses");
     //create course object JSON
-    // let course = {
-    //   teacher: enteredTeacherName,
-    //   name: enteredCourseName,
-    //   price: enteredPrice,
-    //   description: enteredDescription,
-    //   duration: enteredDuration,
-    // };
+  
     let formData = new FormData();
-    formData.append('teacher',enteredTeacherName);
     formData.append('name',enteredCourseName);
     formData.append('price',enteredPrice);
     formData.append('description',enteredDescription);
@@ -74,7 +64,7 @@ const AddCourse = () => {
       (Result) => {
       console.log("Result = ", Result);
       // Go to
-      history.push("/courses");
+      history.push("/myCourse/:userId");
     });
   };
   return (
@@ -82,14 +72,7 @@ const AddCourse = () => {
       <Title titre="Add Courses" />
       <div className="container mt-5">
       <form onSubmit={submitAddCourseFormHandler}>
-        <div className="mb-3">
-         <input
-            type="text"
-            className="form-control" placeholder="Teacher's name"
-            value={enteredTeacherName}
-            onChange={getTeacherName}
-          />
-        </div>
+     
         <div className="mb-3">
           
           <input

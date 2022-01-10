@@ -15,6 +15,8 @@ import Events from './components/Events';
 import CoursesById from './components/CoursesById';
 import EventInfo from './components/EventInfo';
 import Trainers from './components/Trainers';
+import Profile from './components/Profile';
+import EventsById from './components/EventsById';
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +28,9 @@ function App() {
         </Route>
         <Route path='/signup' exact>
           <Signup />
+        </Route>
+        <Route path='/profile/:id' exact>
+          <Profile />
         </Route>
         <Route path='/home' exact>
           <Home />
@@ -51,13 +56,16 @@ function App() {
         <Route path='/add-event' exact>
           <AddEvent />
         </Route>
+        <Route path='/myEvents/:userId' exact>
+          <EventsById />
+        </Route>
         <Route path='/Event-Info/:id' exact>
           <EventInfo />
         </Route>
         <Route path='/trainers' exact>
           <Trainers />
         </Route>
-        <Redirect to='/login'></Redirect>
+        <Redirect to='/home'></Redirect>
       </Switch>
       <Footer />
     </BrowserRouter>

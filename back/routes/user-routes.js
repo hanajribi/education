@@ -94,9 +94,9 @@ router.get('/signup', (req, res) => {
     })
 });
 router.get('/:id', (req, res) => {
-    console.log('here into get course by id', req.params.id);
+    console.log('here into get user by id', req.params.id);
     // findOne by price {price:req.params.price }
-    Course.findOne({ _id: req.params.id }).then(
+    User.findOne({ _id: req.params.id }).then(
         (result) => {
             console.log('Here result after find by id ', result);
             if (result) {

@@ -93,6 +93,7 @@ router.get('/:id', (req, res) => {
         }
     )
 });
+// Business Logic find course by connected user
 router.get('/myCourse/:userId', (req, res) => {
     console.log('here into get course by userid', req.params.userId);
     // findOne by price {price:req.params.price }

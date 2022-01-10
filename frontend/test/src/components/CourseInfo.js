@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Title from "./Title";
+import { Link } from 'react-router-dom';
 
 const CourseInfo = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ const CourseInfo = () => {
   return (
 
     <div>
-      <Title titre="Courses" />
+      <Title titre="Plus info" />
 
       <section id="course-details" className="course-details">
         <div className="container" data-aos="fade-up">
@@ -42,7 +43,7 @@ const CourseInfo = () => {
 
                 <div className="course-info d-flex justify-content-between align-items-center">
                   <h5>Trainer</h5>
-                  <p><a href="#">{loadedCourses.teacher}</a></p>
+                  <p><Link to="#">{loadedCourses.teacher}</Link></p>
                 </div>
 
                 <div className="course-info d-flex justify-content-between align-items-center">

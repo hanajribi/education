@@ -384,7 +384,7 @@ header .logo img {
   width: 100%;
   height: 80vh;
   background: #dbe4de;
-  /* background: url("../src/logo.svg") top center;  */
+  /* background: url("/frontend/test/public/images/hero-bg.jpg") top center;  */
   background-size: cover;
   position: relative;
 }
@@ -551,6 +551,7 @@ section {
 .about .content .learn-more-btn:hover {
   background: #3ac162;
   color: #fff;
+  
 }
 @media (max-width: 768px) {
   .about .content .learn-more-btn {
@@ -693,6 +694,7 @@ section {
 }
 .courses .course-content h3 a:hover {
   color: #5fcf80;
+  
 }
 .courses .course-content p {
   font-size: 14px;
@@ -719,17 +721,21 @@ section {
   max-width: 50px;
   border-radius: 50px;
 }
+
 .courses .trainer .trainer-profile span {
   padding-left: 10px;
   font-weight: 600;
   font-size: 16px;
   color: #5a6c60;
 }
-.courses .trainer .trainer-rank {
+.courses .trainer .trainer-rank a {
   font-size: 18px;
   color: #657a6d;
 }
+.courses .trainer .trainer-rank a:hover{
+ color: #5fcf80;
 
+}
 /*--------------------------------------------------------------
 # Trainers
 --------------------------------------------------------------*/
@@ -771,6 +777,7 @@ section {
 .trainers .member .social a:hover {
   color: #5fcf80;
 }
+
 .trainers .member .social i {
   font-size: 18px;
   margin: 0 2px;

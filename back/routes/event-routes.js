@@ -33,7 +33,7 @@ const router = express.Router();
 router.post("/", multer({ storage: storage }).single("img"), (req, res) => {
   let url = req.protocol + "://" + req.get("host");
   const eventObject = new Event({
-    idTeacher: req.body.idTeacher,
+    userId: req.body.userId,
     name: req.body.name,
     description: req.body.description,
     date: req.body.date,
@@ -65,15 +65,18 @@ router.get("/", (req, res) => {
   });
 });
 //Business Logic: Get All Teacher Events
-router.get("/:teacherId", (req, res) => {
-  Event.find({ teacherId: req.params.teacherId }).then((result) => {
+
+router.get("/myEvents/:userId", (req, res) => {
+  console.log('here into get event by userid', req.params.userId);
+
+  Event.find({ userId: req.params.userId }).then((result) => {
     if (result) {
       res.status(200).json({
-        findedEvent: result,
+        findedEventbyUser: result,
       });
     } else {
       res.status(200).json({
-        message: "Event not found",
+        message: "Event not found ID =${req.params.userId}",
       });
     }
   });
